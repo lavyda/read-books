@@ -11,6 +11,8 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
+    "@notionhq/client": "^0.4.1",
+    "@nuxt/http": "^0.6.4",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7"
   },
