@@ -1,6 +1,6 @@
 <template>
   <main class="bg-gradient-to-r from-indigo-800 to-blue-800 text-gray-50">
-    <h1 class="text-5xl mt-8 text-pink-300">just some books I read</h1>
+    <h1 class="mt-8 text-pink-300">just some books I read</h1>
     <Carousel :items="books" />
   </main>
 </template>
@@ -12,10 +12,10 @@ import {
   retrievePage,
   queryDatabasePages,
 } from '../services/notion'
-import { convertBook, getBook } from '../services/googleBooks'
+import { Book } from '~/services/types'
 
 export default {
-  async asyncData({ $config, app }: { $config: any; app: any }) {
+  async asyncData({ $config }: { $config: any }) {
     const notion = new Client({
       auth: $config.notionApiToken,
     })
@@ -23,11 +23,7 @@ export default {
     const pagesWithContent = await Promise.all(
       pages.map(({ id }: { id: string }) => retrievePage(notion, id))
     )
-    const isbns = pagesWithContent.map(convertPage).map((book) => book.ISBN)
-    const booksMeta = await Promise.all(
-      isbns.map((isbn) => getBook(app.$http, isbn))
-    )
-    const books = booksMeta.map(convertBook)
+    const books: Book[] = pagesWithContent.map(convertPage)
     return { books }
   },
 }
@@ -44,5 +40,6 @@ main {
 
 h1 {
   font-family: 'Nothing You Could Do';
+  font-size: clamp(1rem, 3vw + 1rem, 3rem);
 }
 </style>

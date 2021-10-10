@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { Client } from '@notionhq/client'
 import { GetPageResponse } from '@notionhq/client/build/src/api-endpoints'
+import { Book } from './types'
 
 export async function queryDatabasePages(
   client: Client,
@@ -26,15 +27,15 @@ export function retrievePage(
   return client.pages.retrieve({ page_id: pageId })
 }
 
-export function convertPage(page: any): Record<string, any> {
-  const { properties } = page
+export function convertPage(page: any): Book {
+  const { id, properties } = page
   return Object.keys(properties).reduce(
     (acc, prop) => ({
       ...acc,
-      [prop]:
+      [prop.toLowerCase()]:
         properties[prop][properties[prop].type][0].plain_text ??
         properties[prop][properties[prop].type],
     }),
-    {}
+    { id } as Book
   )
 }

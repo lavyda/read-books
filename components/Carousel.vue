@@ -43,10 +43,5 @@ export default {
   scroll-snap-align: start;
   display: flex;
   justify-content: center;
-  padding: 10rem;
-}
-
-.item:not(:first-child) {
-  margin-left: -25%;
 }
 </style>

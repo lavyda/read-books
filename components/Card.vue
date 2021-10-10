@@ -16,32 +16,9 @@
       <img :src="item.thumbnail" class="rounded" />
     </div>
     <div class="details">
-      <div class="text-4xl font-bold tracking-wider">{{ item.title }}</div>
-      <div class="text-gray-300">by: {{ item.authors.join(', ') }}</div>
-      <div class="flex gap-2 mt-4">
-        <span
-          v-for="category in formatCategories(item.categories)"
-          :key="category"
-          class="py-1 px-2 rounded bg-indigo-600 shadow text-sm"
-          >{{ category }}</span
-        >
-      </div>
-    </div>
-    <div
-      class="
-        desc
-        px-3
-        py-2
-        rounded
-        bg-gradient-to-r
-        from-indigo-600
-        to-blue-600
-        shadow
-        leading-relaxed
-        text-sm
-      "
-    >
-      {{ item.description }}
+      <h2 class="details-title font-bold tracking-wider">{{ item.title }}</h2>
+      <div class="text-gray-300">by: {{ item.author }}</div>
+      <div class="details-read text-gray-300 mt-3 text-sm">read in {{ formatRead(item.read) }}</div>
     </div>
   </div>
 </template>
@@ -49,6 +26,7 @@
 <script lang="ts">
 import { PropType } from 'vue'
 import { Book } from '../services/types'
+import { monthFromRead } from '../services/date'
 
 export default {
   name: 'Card',
@@ -59,11 +37,10 @@ export default {
     },
   },
   methods: {
-    formatCategories(categories: string[]) {
-      return categories
-        .map((category) => category.split(/,|&/))
-        .flat()
-        .map((category) => category.toLowerCase())
+    formatRead(read: string) {
+      const month = monthFromRead(read)
+      const year = read.split('/')[1]
+      return `${month} ${year}`
     },
   },
 }
@@ -71,36 +48,27 @@ export default {
 
 <style scoped>
 .container {
-  width: 50rem;
+  width: min(80%, 40rem);
   display: grid;
-  grid-template-columns: 125px 1fr;
-  grid-template-rows: 190px 9rem;
-  grid-template-areas:
-    'thumbnail details'
-    'desc desc';
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
   gap: 1rem;
 }
 
-.thumbnnail {
-  grid-area: thumbnail;
-  height: 0;
-  padding-top: 150%;
-  position: relative;
-  width: 100%;
+.thumbnail {
+  display: grid;
+  place-items: center;
 }
 
 .details {
-  grid-area: details;
   display: flex;
   flex-direction: column;
 }
 
-.desc {
-  grid-area: desc;
-  overflow: scroll;
+.details-title {
+  font-size: clamp(1rem, 2vw + 1rem, 2rem);
 }
 
-img {
-  height: 100%;
+.details-read {
+  margin-block-start: auto;
 }
 </style>

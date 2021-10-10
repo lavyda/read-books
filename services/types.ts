@@ -1,9 +1,8 @@
 export interface Book {
-  authors: string[]
-  categories: string[]
-  description: string
+  author: string
+  created: string
   id: string
-  subtitle: string
+  read: string
   thumbnail: string
   title: string
 }
