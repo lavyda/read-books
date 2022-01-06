@@ -1,26 +1,19 @@
 <template>
-  <div
-    class="
-      container
-      bg-gradient-to-r
-      from-indigo-700
-      to-blue-700
-      p-3
-      rounded-lg
-      shadow-lg
-      text-gray-100
-      tracking-wide
-    "
-  >
-    <div class="thumbnail rounded bg-indigo-600 p-1 shadow">
-      <img :src="item.thumbnail" class="rounded" />
-    </div>
-    <div class="details">
-      <h2 class="details-title font-bold tracking-wider">{{ item.title }}</h2>
-      <div class="text-gray-300">by: {{ item.author }}</div>
-      <div class="details-read text-gray-300 mt-3 text-sm">read in {{ formatRead(item.read) }}</div>
-    </div>
-  </div>
+  <article class="bg-white p-4">
+    <figure class="bg-gray-400 -mt-8 shadow-md">
+      <img
+        :src="item.thumbnail"
+        :alt="`Book cover`"
+        class="bg-gray-400"
+      />
+    </figure>
+    <h2 class="px-2">
+      <div class="text-3xl px-2">{{item.title}}</div>
+      <hr class="w-full border-black my-3">
+      <div class="text-xl px-2">by {{item.author}}</div>
+    </h2>
+    <p>read in {{formatRead(item.read)}}</p>
+  </article>
 </template>
 
 <script lang="ts">
@@ -47,28 +40,55 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  width: min(80%, 40rem);
+article {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
-  gap: 1rem;
+  height: 100%;
+  width: 100%;
+  grid-template-rows: 40% 50% 10%;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    "cover"
+    "details"
+    "read";
 }
 
-.thumbnail {
-  display: grid;
-  place-items: center;
+article > figure {
+  grid-area: cover;
+  justify-self: center;
+  aspect-ratio: 2 / 3;
+  max-height: 100%;
+  max-width: 100%;
 }
 
-.details {
-  display: flex;
-  flex-direction: column;
+img {
+  aspect-ratio: 2 / 3;
 }
 
-.details-title {
-  font-size: clamp(1rem, 2vw + 1rem, 2rem);
+h2 {
+  grid-area: details;
 }
 
-.details-read {
-  margin-block-start: auto;
+p {
+  grid-area: read;
+  justify-self: end;
+  align-self: end;
+}
+
+@media screen and (min-width: 640px) {
+  article {
+    width: 46rem;
+    max-width: 100%;
+    height: unset;
+    grid-template-rows: unset;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+      "cover details"
+      "cover read";
+  }
+
+  article > figure {
+    justify-self: unset;
+    max-height: unset;
+  }
 }
 </style>
