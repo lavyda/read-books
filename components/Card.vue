@@ -1,18 +1,29 @@
 <template>
   <article class="h-full w-full bg-white p-4 rounded-md">
-    <figure class="-mt-8 justify-self-center sm:justify-self-start">
-      <img
-        class="max-h-full bg-gray-400 rounded-md shadow-md"
-        :src="item.thumbnail"
-        :alt="`Book cover`"
-      />
-    </figure>
-    <h2 class="pt-4 sm:pl-4">
-      <div class="text-3xl px-2">{{ item.title }}</div>
-      <hr class="w-full border-black my-3" />
-      <div class="text-xl px-2">by {{ item.author }}</div>
-    </h2>
-    <p class="justify-self-end self-end">read in {{ formatRead(item.read) }}</p>
+    <transition name="slide" mode="out-in">
+      <figure
+        :key="item.id"
+        class="-mt-8 justify-self-center sm:justify-self-start"
+      >
+        <img
+          class="max-h-full bg-gray-400 rounded-md shadow-md"
+          :src="item.thumbnail"
+          :alt="`Book cover`"
+        />
+      </figure>
+    </transition>
+    <transition name="fade">
+      <h2 :key="item.id" class="pt-4 sm:pl-4">
+        <div class="text-3xl px-2">{{ item.title }}</div>
+        <hr class="w-full border-black my-3" />
+        <div class="text-xl px-2">by {{ item.author }}</div>
+      </h2>
+    </transition>
+    <transition name="fade">
+      <p :key="item.id" class="justify-self-end self-end">
+        read in {{ formatRead(item.read) }}
+      </p>
+    </transition>
   </article>
 </template>
 
@@ -27,6 +38,10 @@ export default {
     item: {
       type: Object as PropType<Book>,
       required: true,
+    },
+    t: {
+      type: String as PropType<'n' | 'p'>,
+      default: 'n',
     },
   },
   methods: {
@@ -69,5 +84,33 @@ h2 {
 
 p {
   grid-area: read;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s;
+}
+
+.slide-enter {
+  transform: translateY(5%);
+  opacity: 0;
+}
+
+.slide-leave-to {
+  transform: translateY(-25%);
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

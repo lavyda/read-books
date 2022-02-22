@@ -11,7 +11,7 @@
 
     <div class="card flex gap-2 sm:h-full sm:m-w-full">
       <div class="w-6 flex items-center">
-        <button v-if="showPrevious" aria-label="prevoius" @click="previous">
+        <button v-if="showPrevious" aria-label="previous" @click="previous">
           <chevron-left />
         </button>
       </div>
@@ -39,14 +39,14 @@ import { Book } from '~/services/types'
 
 export default Vue.extend({
   async asyncData({ $config }: { $config: any }) {
-      const notion = new Client({
-        auth: $config.notionApiToken,
-      })
-      const pages = await queryDatabasePages(notion, $config.notionReadBooksDb)
-      const pagesWithContent = await Promise.all(
-        pages.map(({ id }: { id: string }) => retrievePage(notion, id))
-      )
-      const books: Book[] = pagesWithContent.map(convertPage)
+    const notion = new Client({
+      auth: $config.notionApiToken,
+    })
+    const pages = await queryDatabasePages(notion, $config.notionReadBooksDb)
+    const pagesWithContent = await Promise.all(
+      pages.map(({ id }: { id: string }) => retrievePage(notion, id))
+    )
+    const books: Book[] = pagesWithContent.map(convertPage)
     return { books }
   },
   data() {
