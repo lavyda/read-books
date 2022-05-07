@@ -1,4 +1,4 @@
-const months = [
+export const months = [
   'January',
   'February',
   'March',
@@ -12,7 +12,3 @@ const months = [
   'November',
   'December',
 ]
-
-export function monthFromRead(read: string) {
-  return months[Number(read.split('/')[0]) - 1]
-}

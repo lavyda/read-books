@@ -30,7 +30,7 @@
 <script lang="ts">
 import { PropType } from 'vue'
 import { Book } from '../services/types'
-import { monthFromRead } from '../services/date'
+import { months } from '../services/date'
 
 export default {
   name: 'Card',
@@ -46,9 +46,8 @@ export default {
   },
   methods: {
     formatRead(read: string) {
-      const month = monthFromRead(read)
-      const year = read.split('/')[1]
-      return `${month} ${year}`
+      const date = new Date(read)
+      return `${months[date.getMonth()]} ${date.getFullYear()}`
     },
   },
 }

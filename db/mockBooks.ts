@@ -4,7 +4,7 @@ export const books = [
     created: '2022-01-08T17:18:00.000Z',
     thumbnail:
       'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327869409l/7624.jpg',
-    read: '01/2022',
+    read: '2022-01-01',
     author: 'William Golding',
     title: 'Lord of the Flies',
   },
@@ -13,7 +13,7 @@ export const books = [
     created: '2021-12-25T18:01:00.000Z',
     thumbnail:
       'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1513258307l/34101725._SY475_.jpg',
-    read: '12/2021',
+    read: '2021-12-01',
     author: 'Reza Aslan',
     title: 'God: A Human History',
   },
@@ -22,7 +22,7 @@ export const books = [
     created: '2021-12-25T17:59:00.000Z',
     thumbnail:
       'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1579017235l/43708884._SX318_.jpg',
-    read: '12/2021',
+    read: '2021-12-01',
     author: 'Charlie Mackesy',
     title: 'The Boy, the Mole, the Fox and the Horse',
   },
@@ -31,7 +31,7 @@ export const books = [
     created: '2021-10-05T16:05:00.000Z',
     thumbnail:
       'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1609095173l/50202953._SY475_.jpg',
-    read: '09/2021',
+    read: '2021-09-01',
     author: 'Susanna Clarke',
     title: 'Piranesi',
   },
@@ -40,7 +40,7 @@ export const books = [
     created: '2021-05-19T16:09:00.000Z',
     thumbnail:
       'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1383718290l/13079982.jpg',
-    read: '05/2021',
+    read: '2021-05-01',
     author: 'Ray Bradbury',
     title: 'Fahrenheit 451',
   },
@@ -49,7 +49,7 @@ export const books = [
     created: '2021-05-19T16:07:00.000Z',
     thumbnail:
       'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1367545443l/157993.jpg',
-    read: '04/2021',
+    read: '2021-04-01',
     author: 'Antoine de Saint-Exupéry',
     title: 'The Little Prince',
   },
@@ -58,7 +58,7 @@ export const books = [
     created: '2021-05-16T18:49:00.000Z',
     thumbnail:
       'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1325861570l/170448.jpg',
-    read: '01/2021',
+    read: '2021-01-01',
     author: 'George Orwell',
     title: 'Animal Farm',
   },
@@ -67,7 +67,7 @@ export const books = [
     created: '2021-05-16T18:49:00.000Z',
     thumbnail:
       'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1437799970l/24611623._SY475_.jpg',
-    read: '01/2021',
+    read: '2021-01-01',
     author: 'Yeonmi Park',
     title: "In Order to Live: A North Korean Girl's Journey to Freedom",
   },
@@ -76,7 +76,7 @@ export const books = [
     created: '2021-05-16T18:48:00.000Z',
     thumbnail:
       'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1497098563l/15783514._SY475_.jpg',
-    read: '01/2021',
+    read: '2021-01-01',
     author: 'Neil Gaiman',
     title: 'The Ocean at the End of the Lane',
   },
